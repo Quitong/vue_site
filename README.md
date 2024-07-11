@@ -1,4 +1,4 @@
-https://nodejs.org/en
+https://nodejs.org/en - установка npm если его нет
 
 
 cd vue_project
