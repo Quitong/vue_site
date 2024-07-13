@@ -23,7 +23,7 @@ import GoodsItem from './components/GoodsItem.vue'
 </script>
 <template>
   <button @click="getPosts">Get posts</button>
-  <GoodsItem v-for="post in posts.data" :key="post.id" data-test="post">
+  <GoodsItem v-for="post in posts.data" :key="post.id" data-test="post" :id = "post.id" :likes="post.likes">
     <template #title>
       {{ post.title }}
     </template>
