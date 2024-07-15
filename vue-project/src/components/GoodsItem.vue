@@ -13,10 +13,16 @@ import axios from "axios"
 const props = defineProps(["id","likes"])
 const inner_likes = ref(props.likes)
 async function like(){
-  inner_likes.value ++
+  await axios.post('http://192.168.0.107:8000/shop/shop/'+props.id+'/like/',{})
+  .then((response) => {
+    if (response.status == 200){
+      inner_likes.value++
+    }
+  })
+
 }
 async function addToCard(){
-  await axios.get('http://127.0.0.1:5000/buy/'+props.id)
+  await axios.post('http://192.168.0.107:8000/shop/shop/'+props.id+'/add_to_basket/',{})
 }
 </script>
 

@@ -25,10 +25,10 @@ import GoodsItem from './components/GoodsItem.vue'
   <button @click="getPosts">Get posts</button>
   <GoodsItem v-for="post in posts.data" :key="post.id" data-test="post" :id = "post.id" :likes="post.likes">
     <template #title>
-      {{ post.title }}
+      {{ post.name }}
     </template>
     <template #price>
-      {{ post.price }}
+      {{ post.cost }}
     </template>
   </GoodsItem>
   
@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     async getPosts() {
-      this.posts = await axios.get('http://127.0.0.1:5000/')
+      this.posts = await axios.get('http://192.168.0.107:8000/shop/shop/')
       console.log(this.posts)
     }
   }
