@@ -22,6 +22,10 @@ import TheWelcome from './components/TheWelcome.vue'
 import GoodsItem from './components/GoodsItem.vue'
 </script>
 <template>
+  <div id="app">
+    <NavBar />
+    <router-view/>
+  </div>
   <button @click="getPosts">Get posts</button>
   <GoodsItem v-for="post in posts.data" :key="post.id" data-test="post" :id = "post.id" :likes="post.likes">
     <template #title>
@@ -35,6 +39,8 @@ import GoodsItem from './components/GoodsItem.vue'
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue'
+
 import axios from 'axios'
 
 export default {
@@ -43,6 +49,10 @@ export default {
       posts: {data:null}
     }
   },
+  components: {
+    NavBar
+  },
+
   methods: {
     async getPosts() {
       this.posts = await axios.get('http://192.168.0.107:8000/shop/shop/')
@@ -77,5 +87,12 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
 </style>
